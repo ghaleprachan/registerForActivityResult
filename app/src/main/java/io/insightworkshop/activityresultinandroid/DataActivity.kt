@@ -43,6 +43,8 @@ class DataActivity : AppCompatActivity() {
 
 /**
  * Custom contract to handle parcelable we also can use inbuild [StartActivityForResult()]
+ * To handle result for inbuild contract visit [https://developer.android.com/training/basics/intents/result#custom]
+ * For full documentation visit [https://developer.android.com/training/basics/intents/result]
 */
 class CustomContract<T : Parcelable> : ActivityResultContract<Intent, T?>() {
     companion object {
