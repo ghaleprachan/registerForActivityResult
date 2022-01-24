@@ -40,3 +40,25 @@ class DataActivity : AppCompatActivity() {
         }
     }
 }
+
+/**
+ * Custom contract to handle parcelable we also can use inbuild [StartActivityForResult()]
+*/
+class CustomContract<T : Parcelable> : ActivityResultContract<Intent, T?>() {
+    companion object {
+        const val RESULT_DATA = "result_data"
+    }
+
+    override fun createIntent(context: Context, input: Intent): Intent {
+        return input
+    }
+
+    override fun parseResult(resultCode: Int, intent: Intent?): T? {
+        return if (resultCode == Activity.RESULT_OK) {
+            intent?.getParcelableExtra(RESULT_DATA)
+        } else {
+            null
+        }
+    }
+}
+
